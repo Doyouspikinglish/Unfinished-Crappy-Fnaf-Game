@@ -70,6 +70,12 @@
     <Image Include="CameraRoom1.png">
       <Filter>Fichiers de ressources</Filter>
     </Image>
+    <Image Include="CameraRoom2.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="CameraRoom3.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="ARCADE_I.TTF">

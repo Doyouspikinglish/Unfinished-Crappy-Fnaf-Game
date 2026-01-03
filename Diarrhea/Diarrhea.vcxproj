@@ -154,6 +154,8 @@
     <ClInclude Include="UI.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="CameraRoom2.png" />
+    <Image Include="CameraRoom3.png" />
     <Image Include="FIXEDstatic.png" />
     <Image Include="FNAF Jumpscare.png" />
     <Image Include="FNAF office.png" />
