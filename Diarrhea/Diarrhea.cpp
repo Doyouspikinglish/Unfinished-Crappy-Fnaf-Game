@@ -61,6 +61,7 @@ int main()
 	Rectangle CAM3 = { 470, 550, 21, 20 };
 	Rectangle CAM4 = { 490, 550, 21, 20 };
 
+	int CurrentCamera = 1;
 
 	UI OnCam;
 	 
@@ -79,10 +80,23 @@ int main()
 	tex.images.push_back(LoadTexture("FIXEDstatic.png")); //-> 7
 
 	tex.images.push_back(LoadTexture("CameraRoom1.png")); //->8
+	tex.images.push_back(LoadTexture("CameraRoom2.png")); //->9
+	tex.images.push_back(LoadTexture("CameraRoom3.png")); //->10
 
 	Arcadefont.font.push_back(LoadFont("ARCADE_I.TTF"));     
 	
-	
+	auto FastDrawCamera = [&]()
+	{
+		DrawTexture(tex.images[3], 470, 500, DoGreen(CAM1));
+		DrawTexture(tex.images[4], 490, 500, DoGreen(CAM2));
+		DrawTexture(tex.images[5], 470, 550, DoGreen(CAM3));
+		DrawTexture(tex.images[6], 490, 550, DoGreen(CAM4));
+	};
+
+	auto FastDrawCameraButton = [&]()
+	{
+		DrawTexture(tex.images[1], 170, 550, DoGreen(CameraCheckHover));
+	};
 
 
 	while (!WindowShouldClose())
@@ -103,7 +117,7 @@ int main()
 				state = GAME;
 
 			}
-			
+			 
 		}
 
 		if (state == GAME)
@@ -136,10 +150,57 @@ int main()
 					DrawTexture(tex.images[1], 170, 550, WHITE);
 				    /*CAMERA*/
 
-					DrawTexture(tex.images[3], 470, 500, DoGreen(CAM1));
-					DrawTexture(tex.images[4], 490, 500, DoGreen(CAM2));
-					DrawTexture(tex.images[5], 470, 550, DoGreen(CAM3));
-					DrawTexture(tex.images[6], 490, 550, DoGreen(CAM4));
+					FastDrawCamera();
+
+					if (OnClick(CAM1))
+					{
+						CurrentCamera = 1;
+						FastDrawCamera();
+
+					}
+
+
+					if (OnClick(CAM2))
+					{
+						CurrentCamera = 2;
+						FastDrawCamera();
+					}
+
+					if (OnClick(CAM3))
+					{
+						CurrentCamera = 3;
+						FastDrawCamera();
+					}
+
+					if (OnClick(CAM4))
+					{
+						CurrentCamera = 4;
+						FastDrawCamera();
+					}
+
+
+					if (CurrentCamera == 1)
+					{
+						DrawTexture(tex.images[8], 0, 0, WHITE);
+						FastDrawCameraButton();
+						FastDrawCamera();
+					}
+
+					if (CurrentCamera == 2)
+					{
+						DrawTexture(tex.images[9], 0, 0, WHITE);
+						FastDrawCameraButton();
+						FastDrawCamera();
+
+					}
+
+					if (CurrentCamera == 3)
+					{
+						DrawTexture(tex.images[10], 0, 0, WHITE);
+						FastDrawCameraButton();
+						FastDrawCamera();
+					}
+
 
 					/*CAMERA*/
 					DrawTexture(tex.images[7], 0, 0, WHITE);
@@ -147,15 +208,24 @@ int main()
 
 				else
 				{
-					DrawTexture(tex.images[8], 0, 0, WHITE);
-					DrawTexture(tex.images[1], 170, 550, GREEN);
+					if(CurrentCamera == 1) 
+						DrawTexture(tex.images[8], 0, 0, WHITE);
+						DrawTexture(tex.images[1], 170, 550, GREEN);
+						FastDrawCamera();
+					if (CurrentCamera == 2)
+						DrawTexture(tex.images[9], 0, 0, WHITE);
+						DrawTexture(tex.images[1], 170, 550, GREEN);
+						FastDrawCamera();
+
+					if (CurrentCamera == 3)
+						DrawTexture(tex.images[10], 0, 0, WHITE);
+						DrawTexture(tex.images[1], 170, 550, GREEN);
+						FastDrawCamera();
+
 
 					/*BUTTONS*/
 
-					DrawTexture(tex.images[3], 470, 500, DoGreen(CAM1));
-					DrawTexture(tex.images[4], 490, 500, DoGreen(CAM2));
-					DrawTexture(tex.images[5], 470, 550, DoGreen(CAM3));
-					DrawTexture(tex.images[6], 490, 550, DoGreen(CAM4));
+					FastDrawCamera();
 
 					/*BUTTONS*/
 
