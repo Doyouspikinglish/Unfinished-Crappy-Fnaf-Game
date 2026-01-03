@@ -39,6 +39,7 @@ Color DoGreen(Rectangle F)
 int main()
 {
 	InitWindow(600, 600, "Five nights at the OGs");
+	InitAudioDevice();
 	SetTargetFPS(60);
 
 	/*debug purpose*/ std::cout << "\033]0;GAME\007"; /*debug purpose*/
@@ -46,6 +47,7 @@ int main()
 
 	TEXTURE tex;
 	FONT Arcadefont;
+	SOUND sound;
 
 	Rectangle CheckHover = {230, 230, 200, 50};
 	Rectangle MenuCheckHover = { 230, 230, 200, 50 };
@@ -81,6 +83,13 @@ int main()
 	tex.images.push_back(LoadTexture("CameraRoom4.png")); //->11
 
 	Arcadefont.font.push_back(LoadFont("ARCADE_I.TTF"));     
+
+	sound.sounds.push_back(LoadSound("SmallBlip.wav")); //->0
+	sound.sounds.push_back(LoadSound("OpenCamera.wav")); //->1
+	sound.sounds.push_back(LoadSound("CameraClick.wav")); //->2
+	sound.sounds.push_back(LoadSound("OfficeAmbiance.wav")); //->3
+
+	
 	
 	auto FastDrawCamera = [&]()
 	{
@@ -95,9 +104,14 @@ int main()
 		DrawTexture(tex.images[1], 170, 550, DoGreen(CameraCheckHover));
 	};
 
+	PlaySound(sound.sounds[3]);
 
 	while (!WindowShouldClose())
 	{
+
+		if (!IsSoundPlaying(sound.sounds[3]))
+			PlaySound(sound.sounds[3]);
+
 		BeginDrawing();
 		ClearBackground(BLACK);
 
@@ -137,6 +151,7 @@ int main()
 			if (OnClick(CameraCheckHover))
 			{
 				IsOnCamera = !IsOnCamera;
+				PlaySound(sound.sounds[2]);
 			}
 
 			if (IsOnCamera)
@@ -153,6 +168,7 @@ int main()
 					{
 						CurrentCamera = 1;
 						FastDrawCamera();
+						PlaySound(sound.sounds[0]);
 
 					}
 
@@ -161,18 +177,21 @@ int main()
 					{
 						CurrentCamera = 2;
 						FastDrawCamera();
+						PlaySound(sound.sounds[0]);
 					}
 
 					if (OnClick(CAM3))
 					{
 						CurrentCamera = 3;
 						FastDrawCamera();
+						PlaySound(sound.sounds[0]);
 					}
 
 					if (OnClick(CAM4))
 					{
 						CurrentCamera = 4;
 						FastDrawCamera();
+						PlaySound(sound.sounds[0]);
 					}
 
 
@@ -280,7 +299,6 @@ int main()
 		EndDrawing();
 	}
 
-	
 	CloseWindow();
+	CloseAudioDevice();
 }
-

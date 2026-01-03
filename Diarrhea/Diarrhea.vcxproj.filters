@@ -88,4 +88,18 @@
       <Filter>Fichiers de ressources</Filter>
     </Font>
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="SmallBlip.wav">
+      <Filter>Fichiers de ressources</Filter>
+    </Media>
+    <Media Include="OpenCamera.wav">
+      <Filter>Fichiers de ressources</Filter>
+    </Media>
+    <Media Include="CameraClick.wav">
+      <Filter>Fichiers de ressources</Filter>
+    </Media>
+    <Media Include="OfficeAmbiance.wav">
+      <Filter>Fichiers de ressources</Filter>
+    </Media>
+  </ItemGroup>
 </Project>
