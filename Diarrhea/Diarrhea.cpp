@@ -1,13 +1,9 @@
 #include "raylib.h"
 #include "TXTR.h"
 #include "UI.h"
+#include "GameState.h"
 #include <iostream>
 
-enum STATE 
-{
-	MENU,
-	GAME
-}; 
 
 
 bool IsHovered(Rectangle R)
@@ -47,7 +43,6 @@ int main()
 
 	/*debug purpose*/ std::cout << "\033]0;GAME\007"; /*debug purpose*/
 
-	STATE state = MENU;
 
 	TEXTURE tex;
 	FONT Arcadefont;
@@ -63,6 +58,7 @@ int main()
 
 	int CurrentCamera = 1;
 
+	STATE state = MENU;
 	UI OnCam;
 	 
 	bool IsOnPauseMenu = false;
@@ -82,6 +78,7 @@ int main()
 	tex.images.push_back(LoadTexture("CameraRoom1.png")); //->8
 	tex.images.push_back(LoadTexture("CameraRoom2.png")); //->9
 	tex.images.push_back(LoadTexture("CameraRoom3.png")); //->10
+	tex.images.push_back(LoadTexture("CameraRoom4.png")); //->11
 
 	Arcadefont.font.push_back(LoadFont("ARCADE_I.TTF"));     
 	
@@ -201,6 +198,13 @@ int main()
 						FastDrawCamera();
 					}
 
+					if (CurrentCamera == 4)
+					{
+						DrawTexture(tex.images[11], 0, 0, WHITE);
+						FastDrawCameraButton();
+						FastDrawCamera(); /*Just checking if it is the issue*/
+					}
+
 
 					/*CAMERA*/
 					DrawTexture(tex.images[7], 0, 0, WHITE);
@@ -221,6 +225,9 @@ int main()
 						DrawTexture(tex.images[10], 0, 0, WHITE);
 						DrawTexture(tex.images[1], 170, 550, GREEN);
 						FastDrawCamera();
+					if (CurrentCamera == 4) 
+						DrawTexture(tex.images[11], 0, 0, WHITE);
+						DrawTexture(tex.images[1], 170, 550, GREEN);
 
 
 					/*BUTTONS*/

@@ -38,6 +38,9 @@
     <ClInclude Include="TXTR.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="FIXEDstatic.png">
@@ -74,6 +77,9 @@
       <Filter>Fichiers de ressources</Filter>
     </Image>
     <Image Include="CameraRoom3.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="CameraRoom4.png">
       <Filter>Fichiers de ressources</Filter>
     </Image>
   </ItemGroup>

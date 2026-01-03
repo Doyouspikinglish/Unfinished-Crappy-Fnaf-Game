@@ -1,11 +1,13 @@
+
 #include "Animatronic.h"
+
 
 bool Animatronic::IsActive()
 {
-	return false;
+	return false;  
 }
 
-bool Animatronic::Jumpscare()
+bool Animatronic::Jumpscare() /*if IsActive is true && Jumpscare is true, return to the menu*/
 {
 	return false;
 }
@@ -15,10 +17,11 @@ bool Animatronic::IsOnOffice()
 	return false;
 }
 
-void Animatronic::KillPlayer()
+bool Animatronic::KillPlayer()
 {
-	//placeholder
+	if (IsActive() && Jumpscare())
+		return true;
+	else
+		return false;
 }
-
-
 
