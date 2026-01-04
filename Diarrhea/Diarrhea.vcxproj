@@ -155,6 +155,8 @@
     <ClInclude Include="UI.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="ButtonClicked.png" />
+    <Image Include="ButtonNotClicked.png" />
     <Image Include="CameraRoom2.png" />
     <Image Include="CameraRoom3.png" />
     <Image Include="CameraRoom4.png" />
@@ -173,6 +175,7 @@
     <Font Include="ARCADE_I.TTF" />
   </ItemGroup>
   <ItemGroup>
+    <Media Include="CalmingMusic.wav" />
     <Media Include="CameraClick.wav" />
     <Media Include="OfficeAmbiance.wav" />
     <Media Include="OpenCamera.wav" />

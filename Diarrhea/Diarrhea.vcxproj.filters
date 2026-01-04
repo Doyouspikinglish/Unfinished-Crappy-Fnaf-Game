@@ -82,6 +82,12 @@
     <Image Include="CameraRoom4.png">
       <Filter>Fichiers de ressources</Filter>
     </Image>
+    <Image Include="ButtonClicked.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="ButtonNotClicked.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="ARCADE_I.TTF">
@@ -99,6 +105,9 @@
       <Filter>Fichiers de ressources</Filter>
     </Media>
     <Media Include="OfficeAmbiance.wav">
+      <Filter>Fichiers de ressources</Filter>
+    </Media>
+    <Media Include="CalmingMusic.wav">
       <Filter>Fichiers de ressources</Filter>
     </Media>
   </ItemGroup>

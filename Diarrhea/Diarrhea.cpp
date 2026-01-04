@@ -35,6 +35,13 @@ Color DoGreen(Rectangle F)
 		return WHITE;
 }
 
+void reset(int& CurrentCamra, bool& IsOnCamera, bool& IsOnPauseMenu)
+{
+	CurrentCamra = 1;
+	IsOnCamera = false;
+	IsOnPauseMenu = false;
+}
+
 
 int main()
 {
@@ -58,10 +65,12 @@ int main()
 	Rectangle CAM3 = { 470, 380, 21, 20 };
 	Rectangle CAM4 = { 490, 380, 21, 20 };
 
+	Rectangle DoorButton = { 45, 30, 70, 70 };
+
 	int CurrentCamera = 1;
 
 	STATE state = MENU;
-	UI OnCam;
+	UI OnCam; 
 	 
 	bool IsOnPauseMenu = false;
 	bool IsOnCamera = false;
@@ -82,12 +91,16 @@ int main()
 	tex.images.push_back(LoadTexture("CameraRoom3.png")); //->10
 	tex.images.push_back(LoadTexture("CameraRoom4.png")); //->11
 
+	tex.images.push_back(LoadTexture("ButtonClicked.png")); //->12
+	tex.images.push_back(LoadTexture("ButtonNotClicked.png")); //->13
+
 	Arcadefont.font.push_back(LoadFont("ARCADE_I.TTF"));     
 
 	sound.sounds.push_back(LoadSound("SmallBlip.wav")); //->0
 	sound.sounds.push_back(LoadSound("OpenCamera.wav")); //->1
 	sound.sounds.push_back(LoadSound("CameraClick.wav")); //->2
 	sound.sounds.push_back(LoadSound("OfficeAmbiance.wav")); //->3
+	sound.sounds.push_back(LoadSound("CalmingMusic.wav")); //-> 4
 
 	
 	
@@ -103,6 +116,28 @@ int main()
 	{
 		DrawTexture(tex.images[1], 170, 550, DoGreen(CameraCheckHover));
 	};
+
+	auto FastDrawDoorButton = [&]()
+	{
+		if (IsHovered(DoorButton))
+		{
+			DrawTexture(tex.images[12], 45, 30, WHITE);
+		}
+
+
+		else
+		{
+			DrawTexture(tex.images[13], 45, 30, WHITE);
+		}
+
+		if (OnClick(DoorButton))
+		{
+			PlaySound(sound.sounds[4]);
+		}
+
+
+	};
+
 
 	PlaySound(sound.sounds[3]);
 
@@ -135,6 +170,7 @@ int main()
 		{
 
 			DrawTexture(tex.images[0], 0, 0, WHITE);
+			FastDrawDoorButton();
 
 			bool Easter_Egg = GiveChance();
 
@@ -231,29 +267,31 @@ int main()
 
 				else
 				{
-					if(CurrentCamera == 1) 
+					if (CurrentCamera == 1)
+					{
 						DrawTexture(tex.images[8], 0, 0, WHITE);
 						DrawTexture(tex.images[1], 170, 550, GREEN);
 						FastDrawCamera();
+					}
 					if (CurrentCamera == 2)
+					{
 						DrawTexture(tex.images[9], 0, 0, WHITE);
 						DrawTexture(tex.images[1], 170, 550, GREEN);
 						FastDrawCamera();
-
+					}
 					if (CurrentCamera == 3)
+					{
 						DrawTexture(tex.images[10], 0, 0, WHITE);
 						DrawTexture(tex.images[1], 170, 550, GREEN);
 						FastDrawCamera();
-					if (CurrentCamera == 4) 
+					}
+					if (CurrentCamera == 4)
+					{
 						DrawTexture(tex.images[11], 0, 0, WHITE);
 						DrawTexture(tex.images[1], 170, 550, GREEN);
-
-
-					/*BUTTONS*/
-
-					FastDrawCamera();
-
-					/*BUTTONS*/
+						FastDrawCamera();
+					}
+				
 
 					DrawTexture(tex.images[7], 0, 0, WHITE);
 				}
@@ -288,7 +326,7 @@ int main()
 
 			if (OnClick(MenuCheckHover))
 				{
-					IsOnPauseMenu = false;
+					reset(CurrentCamera, IsOnCamera, IsOnPauseMenu);
 					state = MENU;
 				}
 
