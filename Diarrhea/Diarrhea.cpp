@@ -30,7 +30,7 @@ bool GiveChance()
 Color DoGreen(Rectangle F)
 {
 	if (IsHovered(F))
-		return GREEN;
+		return SKYBLUE;
 	else
 		return WHITE;
 }
@@ -53,10 +53,10 @@ int main()
 	Rectangle MenuCheckHover = { 230, 230, 200, 50 };
 	Rectangle CameraCheckHover = { 170, 550, 270, 40 };
 
-	Rectangle CAM1 = { 470, 500, 21, 20 };
-	Rectangle CAM2 = { 490, 500, 21, 20 };
-	Rectangle CAM3 = { 470, 550, 21, 20 };
-	Rectangle CAM4 = { 490, 550, 21, 20 };
+	Rectangle CAM1 = { 470, 340, 21, 20 };
+	Rectangle CAM2 = { 490, 340, 21, 20 };
+	Rectangle CAM3 = { 470, 380, 21, 20 };
+	Rectangle CAM4 = { 490, 380, 21, 20 };
 
 	int CurrentCamera = 1;
 
@@ -93,10 +93,10 @@ int main()
 	
 	auto FastDrawCamera = [&]()
 	{
-		DrawTexture(tex.images[3], 470, 500, DoGreen(CAM1));
-		DrawTexture(tex.images[4], 490, 500, DoGreen(CAM2));
-		DrawTexture(tex.images[5], 470, 550, DoGreen(CAM3));
-		DrawTexture(tex.images[6], 490, 550, DoGreen(CAM4));
+		DrawTexture(tex.images[3], 470, 340, DoGreen(CAM1));
+		DrawTexture(tex.images[4], 490, 340, DoGreen(CAM2));
+		DrawTexture(tex.images[5], 470, 380, DoGreen(CAM3));
+		DrawTexture(tex.images[6], 490, 380, DoGreen(CAM4));
 	};
 
 	auto FastDrawCameraButton = [&]()
