@@ -35,6 +35,26 @@ Color DoGreen(Rectangle F)
 		return WHITE;
 }
 
+bool wait(double seconds)
+{
+	static double start = -1;
+
+	if (start < 0)
+	{
+		start = GetTime();
+	}
+
+	double elapsed = GetTime() - start;
+
+	if (elapsed >= seconds)
+	{
+		start = -1;
+		return true;
+	}
+
+	return false;
+}
+
 void reset(int& CurrentCamra, bool& IsOnCamera, bool& IsOnPauseMenu)
 {
 	CurrentCamra = 1;
@@ -74,6 +94,7 @@ int main()
 	 
 	bool IsOnPauseMenu = false;
 	bool IsOnCamera = false;
+	bool TimeRunnedOut = false;
 
 	tex.images.push_back(LoadTexture("FNAF office.png"));    //office -> 0
 	tex.images.push_back(LoadTexture("Group 1.png"));        //camera button -> 1
@@ -117,7 +138,7 @@ int main()
 		DrawTexture(tex.images[1], 170, 550, DoGreen(CameraCheckHover));
 	};
 
-	auto FastDrawDoorButton = [&]()
+	auto FastDrawDoorButton = [&]() /*its a music box button, I've changed my mind*/
 	{
 		if (IsHovered(DoorButton))
 		{
@@ -132,11 +153,17 @@ int main()
 
 		if (OnClick(DoorButton))
 		{
-			PlaySound(sound.sounds[4]);
+			TimeRunnedOut = false;
+			if (wait(10)) TimeRunnedOut = true; /*It did work*/		
 		}
 
+		
+		if(TimeRunnedOut) 
+			PlaySound(sound.sounds[4]);
 
-	};
+		
+
+	}; 
 
 
 	PlaySound(sound.sounds[3]);
@@ -333,7 +360,7 @@ int main()
 
 			}
 		}
-
+		 
 		EndDrawing();
 	}
 
