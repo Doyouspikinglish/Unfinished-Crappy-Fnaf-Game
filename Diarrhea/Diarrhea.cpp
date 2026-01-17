@@ -197,7 +197,6 @@ int main()
 		{
 
 			DrawTexture(tex.images[0], 0, 0, WHITE);
-			FastDrawDoorButton();
 
 			bool Easter_Egg = GiveChance();
 
@@ -230,12 +229,12 @@ int main()
 					if (OnClick(CAM1))
 					{
 						CurrentCamera = 1;
-						FastDrawCamera();
+						FastDrawCamera(); 
 						PlaySound(sound.sounds[0]);
 
 					}
 
-
+					
 					if (OnClick(CAM2))
 					{
 						CurrentCamera = 2;
@@ -263,6 +262,7 @@ int main()
 						DrawTexture(tex.images[8], 0, 0, WHITE);
 						FastDrawCameraButton();
 						FastDrawCamera();
+						FastDrawDoorButton();
 					}
 
 					if (CurrentCamera == 2)
@@ -299,6 +299,7 @@ int main()
 						DrawTexture(tex.images[8], 0, 0, WHITE);
 						DrawTexture(tex.images[1], 170, 550, GREEN);
 						FastDrawCamera();
+						FastDrawDoorButton(); //ignore door button, I've changed the function already
 					}
 					if (CurrentCamera == 2)
 					{

@@ -7,7 +7,7 @@ class Animatronic
 {
 public:
 	bool Jumpscare();
-	bool IsActive();
+	bool IsActive(bool check);
 	bool IsOnOffice();
 	bool KillPlayer();
 };

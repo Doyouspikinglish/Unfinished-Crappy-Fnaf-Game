@@ -2,9 +2,9 @@
 #include "Animatronic.h"
 
 
-bool Animatronic::IsActive()
+bool Animatronic::IsActive(bool check)
 {
-	return false;  
+	return false;
 }
 
 bool Animatronic::Jumpscare() /*if IsActive is true && Jumpscare is true, return to the menu*/
@@ -19,7 +19,7 @@ bool Animatronic::IsOnOffice()
 
 bool Animatronic::KillPlayer()
 {
-	if (IsActive() && Jumpscare())
+	if (IsActive(true) && Jumpscare())
 		return true;
 	else
 		return false;
