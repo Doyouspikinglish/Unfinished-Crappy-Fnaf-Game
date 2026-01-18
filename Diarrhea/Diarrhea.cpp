@@ -33,7 +33,21 @@ Color DoGreen(Rectangle F)
 		return SKYBLUE;
 	else
 		return WHITE;
+} /*Im not editing this since it saves me some little times cause of my lazy ass*/
+
+Color DoColour(Rectangle G, Color NonHoverColor, Color HoverColor)
+{
+	if (IsHovered(G))
+	{
+		return HoverColor;
+	}
+	else
+	{
+		return NonHoverColor;
+	}
 }
+
+auto& DoColor = DoColour;
 
 bool wait(double seconds)
 {
@@ -299,7 +313,7 @@ int main()
 						DrawTexture(tex.images[8], 0, 0, WHITE);
 						DrawTexture(tex.images[1], 170, 550, GREEN);
 						FastDrawCamera();
-						FastDrawDoorButton(); //ignore door button, I've changed the function already
+						FastDrawDoorButton(); // Ignore door button, I've changed my mind about this being a door.
 					}
 					if (CurrentCamera == 2)
 					{
@@ -368,3 +382,8 @@ int main()
 	CloseWindow();
 	CloseAudioDevice();
 }
+
+/*
+* future functions:
+*	The Music box button on the camera will change its color to red when the timer is getting low
+*/
